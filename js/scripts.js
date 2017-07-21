@@ -19,3 +19,13 @@ Pizza.prototype.chooseSize = function() {
 }
 
 var orderedPizza = new Pizza("none", "Medium");
+
+$(function() {
+  $("#pizzaBuilder").submit(function(event) {
+    event.preventDefault();
+    orderedPizza.addTopping();
+    orderedPizza.chooseSize();
+
+    $("#orderDisplay").text("$" + orderedPizza.price);
+  });
+});

@@ -1,5 +1,5 @@
 function Pizza(topping, size) {
-  this.topping = topping;
+  this.toppings = topping;
   this.size = size;
   this.price = 5;
 }
@@ -12,9 +12,18 @@ var getToppings = function() {
   return chosenToppings;
 }
 
+var displayOrder = function() {
+  $("#orderDisplay").text("You ordered: ");
+  $("#orderDisplay").append("<br>" + "1 " + orderedPizza.size + " pizza with <br>");
+  for (var i = 0; i < orderedPizza.toppings.length; i++) {
+    $("#orderDisplay").append(orderedPizza.toppings[i] + "<br>");
+  }
+  $("#orderDisplay").append("Cost: $" + orderedPizza.price);
+}
+
 Pizza.prototype.addTopping = function() {
-    this.topping = getToppings();
-    this.price += (1 * this.topping.length);
+    this.toppings = getToppings();
+    this.price += (1 * this.toppings.length);
 }
 
 Pizza.prototype.chooseSize = function() {
@@ -34,6 +43,6 @@ $(function() {
     orderedPizza.addTopping();
     orderedPizza.chooseSize();
 
-    $("#orderDisplay").text("$" + orderedPizza.price);
+    displayOrder();
   });
 });

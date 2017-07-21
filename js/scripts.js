@@ -4,10 +4,10 @@ function Pizza(topping, size) {
   this.price = 0;
 }
 
-// function Order() {
-//   this.pizzas = [];
-//   this.orderTotal = 0;
-// }
+function Order() {
+  this.pizzas = [];
+  this.orderTotal = 0;
+}
 
 var getToppings = function() {
   var chosenToppings = [];
@@ -19,18 +19,21 @@ var getToppings = function() {
 
 var displayOrder = function() {
   $("#orderDisplay").text("You ordered: ");
-  $("#orderDisplay").append("<br>" + "1 " + orderedPizza.size + " pizza with <br>");
-  for (var i = 0; i < orderedPizza.toppings.length; i++) {
-    $("#orderDisplay").append(orderedPizza.toppings[i] + "<br>");
+  for (var i = 0; i < orderIndex; i++) {
+    $("#orderDisplay").append("<br>" + "1 " + currentOrder.pizzas[i].size + " pizza with <br>");
+    for (var j = 0; j < currentOrder.pizzas[i].toppings.length; j++) {
+      $("#orderDisplay").append(currentOrder.pizzas[i].toppings[j] + "<br>");
+    }
+    if (currentOrder.pizzas[i].toppings.length === 0) {
+      $("#orderDisplay").append("No toppings" + "<br>");
+    }
+    currentOrder.orderTotal += currentOrder.pizzas[i].price
   }
-  if (orderedPizza.toppings.length === 0) {
-    $("#orderDisplay").append("No toppings" + "<br>");
-  }
-  $("#orderDisplay").append("Cost: $" + orderedPizza.price);
+  $("#orderDisplay").append("Cost: $" + currentOrder.orderTotal);
 }
 
 Pizza.prototype.addTopping = function() {
-    this.toppings = getToppings();
+  this.toppings = getToppings();
 }
 
 Pizza.prototype.chooseSize = function() {
@@ -47,15 +50,29 @@ Pizza.prototype.getCost = function() {
   }
 }
 
-var orderedPizza = new Pizza([], "Medium");
+Order.prototype.newPizza = function() {
+  currentOrder.pizzas[orderIndex] = new Pizza([], "")
+}
+
+//var orderedPizza = new Pizza([], "Medium");
+var currentOrder = new Order();
+var orderIndex = 0;
 
 $(function() {
   $("#pizzaBuilder").submit(function(event) {
     event.preventDefault();
-    orderedPizza.addTopping();
-    orderedPizza.chooseSize();
-    orderedPizza.getCost();
+    currentOrder.newPizza();
+    currentOrder.pizzas[orderIndex].addTopping();
+    currentOrder.pizzas[orderIndex].chooseSize();
+    currentOrder.pizzas[orderIndex].getCost();
+
+    orderIndex++;
+  });
+
+  $("#orderFinish").submit(function(event) {
+    event.preventDefault();
 
     displayOrder();
+    orderIndex = 0;
   });
 });

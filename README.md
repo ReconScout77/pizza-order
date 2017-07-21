@@ -11,7 +11,8 @@
 | Can select a topping | Pepperoni | |
 | Can select a size | Large | |
 | Displays a value for the selected pizza options | Large, Pepperoni | "$9" |
-| Can select multiple toppings | Bacon, Sausage | |
+| Can select multiple toppings | Bacon and Sausage checked, Large | You ordered: <br> 1 Large pizza with <br> Bacon <br> Sausage <br> Cost: $4 |
+| Returns confirmation that no toppings were selected | no toppings checked, small  | You ordered: <br> 1 Small pizza with <br> No toppings <br> Cost: $4 |
 
 ## Setup/Installation Requirements
 

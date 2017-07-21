@@ -74,5 +74,6 @@ $(function() {
 
     displayOrder();
     orderIndex = 0;
+    currentOrder.orderTotal = 0;
   });
 });

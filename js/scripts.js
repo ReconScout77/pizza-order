@@ -4,9 +4,17 @@ function Pizza(topping, size) {
   this.price = 5;
 }
 
+var getToppings = function() {
+  var chosenToppings = [];
+  $("input:checkbox[name=toppings]:checked").each(function(){
+    chosenToppings.push($(this).val());
+  });
+  return chosenToppings;
+}
+
 Pizza.prototype.addTopping = function() {
-  this.topping = $("#toppings").val();
-  this.price += 1;
+    this.topping = getToppings();
+    this.price += (1 * this.topping.length);
 }
 
 Pizza.prototype.chooseSize = function() {
@@ -18,7 +26,7 @@ Pizza.prototype.chooseSize = function() {
   }
 }
 
-var orderedPizza = new Pizza("none", "Medium");
+var orderedPizza = new Pizza([], "Medium");
 
 $(function() {
   $("#pizzaBuilder").submit(function(event) {

@@ -9,26 +9,33 @@
     <title>Order Pizza</title>
   </head>
   <body>
-    <form id="pizzaBuilder">
-      <div class="form-group">
-        <input type="checkbox" name="toppings" value="Cheese">Cheese<br>
-        <input type="checkbox" name="toppings" value="Pepperoni">Pepperoni<br>
-        <input type="checkbox" name="toppings" value="Bacon">Bacon<br>
-        <input type="checkbox" name="toppings" value="Sausage">Sausage<br>
-        <input type="checkbox" name="toppings" value="Onion">Onion<br>
-        <input type="checkbox" name="toppings" value="Pineapple">Pineapple<br>
-      </select>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Build your own pizza order!</h1>
+      </div>
+      <form id="pizzaBuilder">
+        <div class="form-group">
+          <input type="checkbox" name="toppings" value="Cheese">Cheese<br>
+          <input type="checkbox" name="toppings" value="Pepperoni">Pepperoni<br>
+          <input type="checkbox" name="toppings" value="Bacon">Bacon<br>
+          <input type="checkbox" name="toppings" value="Sausage">Sausage<br>
+          <input type="checkbox" name="toppings" value="Onion">Onion<br>
+          <input type="checkbox" name="toppings" value="Pineapple">Pineapple<br>
+        </select>
 
-      <select class="form-control" id="size">
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-      </select>
+        <select class="form-control" id="size">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
 
-      <button type="submit" class="btn">Submit</button>
-    </form>
-    <div class="well">
-      <div id="orderDisplay">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="container">
+        <div class="well">
+          <div id="orderDisplay">
+          </div>
+        </div>
       </div>
     </div>
   </body>

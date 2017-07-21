@@ -4,6 +4,11 @@ function Pizza(topping, size) {
   this.price = 5;
 }
 
+// function Order() {
+//   this.pizzas = [];
+//   this.orderTotal = 0;
+// }
+
 var getToppings = function() {
   var chosenToppings = [];
   $("input:checkbox[name=toppings]:checked").each(function(){
@@ -17,6 +22,9 @@ var displayOrder = function() {
   $("#orderDisplay").append("<br>" + "1 " + orderedPizza.size + " pizza with <br>");
   for (var i = 0; i < orderedPizza.toppings.length; i++) {
     $("#orderDisplay").append(orderedPizza.toppings[i] + "<br>");
+  }
+  if (orderedPizza.toppings.length === 0) {
+    $("#orderDisplay").append("No toppings" + "<br>");
   }
   $("#orderDisplay").append("Cost: $" + orderedPizza.price);
 }
